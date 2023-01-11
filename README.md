@@ -1,6 +1,6 @@
 # FirisbeCaseFrontEnd
 
-Proje [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4 ile yazılmıştır. Frisbe-Case-Backend repositorysini tüketir. Eğer Angulara sahip değilseniz [Angular Resmi Dokümanı](https://angular.io/docs)'ndan kurulumunu yapabilirsiniz. Projeyi ayağa kaldırmadan önce projenin kök dizininde `npm install` komutunu çalıştırın ve bağımlılıkların yüklendiğine emin olun.
+Proje [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4 ile yazılmıştır. Angular v15 NodeJS 16.12 veya daha yüksek sürümleri desteklemektedir. Frisbe-Case-Backend repositorysini tüketir. Eğer Angulara sahip değilseniz [Angular Resmi Dokümanı](https://angular.io/docs)'ndan kurulumunu yapabilirsiniz. Projeyi ayağa kaldırmadan önce projenin kök dizininde `npm install` komutunu çalıştırın ve bağımlılıkların yüklendiğine emin olun.
 
 ## Development server
 
