@@ -1,0 +1,23 @@
+@use "../../../../../assets/scss/variables/layout" as layout-variables;
+@use "../../../../../assets/scss/variables";
+.header {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    z-index: 10;
+    position: fixed;
+    min-width: 100%;
+    top: 0;
+    background-color: white;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.6);
+    padding: 0 1rem;
+    height: layout-variables.$header-height;
+    transition: width layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+
+  }
+  .toggler-icon{
+    color: variables.$dark !important
+  }
+  .user-option{
+    margin-right: .5rem;
+  }

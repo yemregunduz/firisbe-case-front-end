@@ -1,0 +1,22 @@
+<div class="card border-0 mb-2">
+    <div class="card-header bg-transparent d-flex flex-row flex-wrap gap-1 justify-content-between align-items-center">
+        <span *ngIf="model?.items?.length>0">
+            Toplam <b>{{this.model?.count}}</b> kayıttan <b>{{(model?.index) * model?.size}}</b>
+            ile <b>{{!model?.hasNext ? model?.count : (model?.index+1)*model?.size}}</b> arası gösteriliyor.
+        </span>
+        <app-data-not-found text="Filtreye uygun veri bulunamadı." *ngIf="model?.items.length==0"></app-data-not-found>
+        <div class="d-flex flex-row gap-2 flex-wrap">
+            <div class="input-group w-auto" *ngIf="rowCountSelectable">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Satır sayısı:</span>
+                </div>
+                <select [disabled]="model?.items?.length <= 0" (change)="selectedRowCountChange.emit(selectedRowCount)"
+                    [(ngModel)]="selectedRowCount" class="form-select form-select-sm">
+                    <option [disabled]="" *ngFor="let rowCount of rowCounts" [value]="rowCount">{{rowCount}}</option>
+                </select>
+            </div>
+            <button mat-flat-button color="primary" (click)="createButtonClick.emit()">{{buttonName?? 'Yeni Kayıt'}}</button>
+        </div>
+
+    </div>
+</div>

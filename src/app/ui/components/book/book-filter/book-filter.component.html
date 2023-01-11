@@ -1,0 +1,70 @@
+<div class="filter-box custom-form">
+    <div class="card custom-shadow border-0">
+      <div class="card-header ">
+        <i class="fa fa-book"></i>
+        <h3 class="fw-bold">Kitap Filtrele</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="bookFilterForm" (keyup.enter)="createDynamicRequestModel()">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Kitap Adı:</span>
+                </div>
+                <input id="txtName" type="text" class="form-control form-control-sm" formControlName = "name">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Yazar Adı:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName = "author.firstName">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Yazar Soyadı:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName = "author.lastName">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Menşei:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName="author.country">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Isbn Numarası:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName="isbn">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Kategori:</span>
+                </div>
+                <select class="form-select form-select-sm" formControlName="categoryId">
+                    <option [selected]="!bookFilterForm.controls['categoryId'].value" value="">Hepsi</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button mat-flat-button class="bg-danger text-white"  (click)="resetFilterForm()">Formu Temizle</button>
+        <button mat-flat-button color="primary" (click)="createDynamicRequestModel()">Filtrele</button>
+      </div>
+    </div>
+  </div>

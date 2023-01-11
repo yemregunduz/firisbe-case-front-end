@@ -1,0 +1,63 @@
+<footer class="text-center bg-white text-muted mat-typography mt-4">
+
+
+    <section class="footer p-2 ">
+      <div class="container-fluid p-0 text-center text-md-start mt-2">
+        <div class="d-flex justify-content-center p-2 border-bottom border-3">
+            <div class="d-flex gap-3 ">
+              <a class="text-reset" [attr.href]="candidate.socialMedia.linkedin" target="_blank" >
+                <i class="fa fa-linkedin" style="font-size: 24px;"></i>
+              </a>
+              <a class="text-reset " [attr.href]="candidate.socialMedia.instagram"  target="_blank" >
+                <i class="fa fa-instagram" style="font-size: 24px;"></i>
+              </a>
+              <a class="text-reset"  [attr.href]="candidate.socialMedia.twitter" target="_blank" >
+                <i class="fa fa-github" style="font-size: 24px;"></i>
+              </a>
+            </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h3 class="text-uppercase fw-bold mb-2">
+              <i class="fa  fa-diamond me-1"></i>{{candidate.fullName}}
+            </h3>
+            <p>
+                {{candidate.footerDescription}}
+            </p>
+          </div>
+  
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h3 class="text-uppercase fw-bold mb-2">
+              CANDIDATE
+            </h3>
+            <p *ngFor="let usefulLink of candidate.companyLinks">
+              <a [attr.href]="usefulLink.url" target="_blank" class="text-reset">{{usefulLink.title}}</a>
+            </p>
+          </div>
+  
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h3 class="text-uppercase fw-bold mb-2">
+              Technologies
+            </h3>
+            <p *ngFor="let product of candidate.technologies">
+              <a [attr.href]="product.url" target="_blank" class="text-reset">{{product.title}}</a>
+            </p>
+          </div>
+  
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h3 class="text-uppercase fw-bold mb-2">Contact</h3>
+            <p><i class="fa fa-home me-1"></i> {{candidate.address}}</p>
+            <p>
+              <i class="fa fa-envelope me-1"></i>
+              {{candidate.email}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <div class="text-center  p-4" >
+      © 2022 Copyright: Powered By
+      <a class="text-reset fw-bold text-decoration-none" target="_blank">{{candidate.copyright}}</a>
+    </div>
+  </footer>

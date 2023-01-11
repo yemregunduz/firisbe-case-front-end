@@ -1,0 +1,35 @@
+<app-book-filter [categories]="categories" (applyFilter)="applyFilter($event)"></app-book-filter>
+
+<div class="table-responsive custom-shadow rounded-2 p-2"  >
+  <app-table-header buttonName="Yeni Kitap Ekle" [model]="books?.data"
+  (createButtonClick)="openCreateBookDialog()" (selectedRowCountChange)="changeSelectedRowCount($event)"></app-table-header>
+  <table class="table table-striped"  *ngIf="books?.data.items.length>0" >
+    <caption>
+      <app-pagination position="middle" [currentPage]="currentPage" [dataToPaginate]="books"
+        (onPageChange)="onPageChange($event)">
+      </app-pagination>
+    </caption>
+    <thead >
+      <tr>
+        <th></th>
+        <th>Kitabın Adı</th>
+        <th>Isbn No.</th>
+        <th>Yazar</th>
+        <th>Kategori</th>
+        <th>Menşei</th>
+        <th>Cinsiyet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of books?.data.items; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.isbn}}</td>
+        <td>{{item.author.fullName}}</td>
+        <td>{{item.category.name}}</td>
+        <td>{{item.author.country}}</td>
+        <td>{{item.author.gender == 0 ? 'Erkek' : 'Kadın'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

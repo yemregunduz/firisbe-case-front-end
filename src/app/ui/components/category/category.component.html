@@ -1,0 +1,33 @@
+<app-category-filter (applyFilter)="applyFilter($event)" ></app-category-filter>
+<div class="accordion accordion-flush" id="categoryAccordion">
+    <div class="row">
+        <app-table-header [rowCountSelectable]="false" buttonName="Yeni Kategori Ekle"
+            (createButtonClick)="openCreateCategoryDialog()" [model]="categories?.data"></app-table-header>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2" *ngFor="let category of categories?.data.items">
+            <div class="accordion-item custom-shadow">
+                <h2 class="accordion-header" [attr.id]="'category-accordion'+category.id">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#category-accordion-body'+category.id" aria-expanded="false"
+                        aria-controls="flush-collapseOne">
+                        {{category.name}}
+                    </button>
+                </h2>
+                <div [attr.id]="'category-accordion-body'+category.id" class="accordion-collapse collapse"
+                    aria-labelledby="flush-headingOne" data-bs-parent="#categoryAccordion">
+                    <div class="accordion-body">
+                        {{category.description}} <br>
+                        <app-data-not-found *ngIf="category.books.length == 0"
+                            text="Bu kategoride kütüphanemizde hiç kitap bulunmamaktadır."></app-data-not-found>
+                        <span *ngIf="category.books.length>0"><b>{{category.name}} </b>kategorisinde kütüphanemizde
+                            <b>{{category.books.length}} </b>adet kitap bulunmaktadır: <b
+                                *ngFor="let book of category.books; let last = last">{{book.name}} <span *ngIf="!last">,
+                                </span> </b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-pagination [dataToPaginate]="categories " position="middle" [currentPage]="currentPage"
+            (onPageChange)="onPageChange($event)"></app-pagination>
+    </div>
+
+</div>

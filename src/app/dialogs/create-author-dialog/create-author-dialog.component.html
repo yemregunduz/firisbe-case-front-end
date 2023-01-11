@@ -1,0 +1,77 @@
+<div class="mat-dialog-header">
+    <h2 mat-dialog-title class="m-0">Kitap Ekle</h2>
+    <mat-icon class="mat-dialog-closer" [mat-dialog-close]>close</mat-icon>
+  </div>
+  <mat-dialog-content>
+  
+    <form class="custom-form" [formGroup]="authorForm">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Yazar Adı:</span>
+            </div>
+            <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('firstName')"
+              formControlName="firstName">
+          </div>
+          <mat-error *ngIf="validateFormControl('firstName')">
+            Yazarın adını girmek zorunludur.
+          </mat-error>
+        </div>
+        <div class=" col-md-6 col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Yazar Soyadı:</span>
+            </div>
+            <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('lastName')"
+              formControlName="lastName">
+          </div>
+          <mat-error *ngIf="validateFormControl('lastName')">
+            Yazarın soyadını girmek zorunludur.
+          </mat-error>
+        </div>
+        <div class=" col-md-6 col-sm-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Ülke:</span>
+              </div>
+              <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('country')"
+                formControlName="country">
+            </div>
+            <mat-error *ngIf="validateFormControl('country')">
+              Yazarın ülkesini girmek zorunludur.
+            </mat-error>
+          </div>
+          <div class=" col-md-6 col-sm-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Yazarın Yaşı:</span>
+              </div>
+              <input type="number" class="form-control form-control-sm" [class.border-danger]="validateFormControl('age')"
+                formControlName="age">
+            </div>
+            <mat-error *ngIf="validateFormControl('age')">
+              Yazarın yaşını girmek zorunludur.
+            </mat-error>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Cinsiyet</span>
+              </div>
+              <select class="form-select form-select-sm" formControlName = "gender">
+                  <option selected value="">Cinsiyet Seç</option>
+                  <option *ngFor="let option of data?.genderOptions" [value]="option.value">{{ option.label }}</option>
+              </select>
+            </div>
+            <mat-error *ngIf="validateFormControl('gender')">
+                Cinsiyet seçimi zorunludur.
+              </mat-error>
+          </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button color="warn" [mat-dialog-close]>Vazgeç</button>
+    <button mat-flat-button color="primary" (click)="createAuthor()">Ekle</button>
+  </mat-dialog-actions>

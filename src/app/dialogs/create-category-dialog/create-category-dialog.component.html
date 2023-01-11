@@ -1,0 +1,39 @@
+<div class="mat-dialog-header">
+    <h2 mat-dialog-title class="m-0">Kategori Ekle</h2>
+    <mat-icon class="mat-dialog-closer" [mat-dialog-close]>close</mat-icon>
+  </div>
+  <mat-dialog-content>
+  
+    <form class="custom-form" [formGroup]="categoryForm">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Kategori Adı:</span>
+            </div>
+            <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('name')"
+              formControlName="name">
+          </div>
+          <mat-error *ngIf="validateFormControl('name')">
+            Kategori adı en az 2 karakterden oluşmalıdır.
+          </mat-error>
+        </div>
+        <div class=" col-md-6 col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Kategori Açıklaması:</span>
+            </div>
+            <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('description')"
+              formControlName="description">
+          </div>
+          <mat-error *ngIf="validateFormControl('description')">
+            Kategori açıklaması girmek zorunludur.
+          </mat-error>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button color="warn" [mat-dialog-close]>Vazgeç</button>
+    <button mat-flat-button color="primary" (click)="createCategory()">Ekle</button>
+  </mat-dialog-actions>

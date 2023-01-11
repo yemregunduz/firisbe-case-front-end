@@ -1,0 +1,9 @@
+@use "../../../assets/scss/variables/layout" as layout-variables;
+.main-content{
+    flex:1;
+    margin-top:64px;
+    max-width: 100%;
+    margin-left: auto;
+    transition: max-width layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+}
+

@@ -1,0 +1,209 @@
+@use "../../../../../assets/scss/variables" as variables;
+@use "../../../../../assets/scss/variables/layout" as layout-variables;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:0;
+}
+.sidebar {
+  display:flex;
+  top: 0;
+  margin-top:layout-variables.$header-height;
+  left: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 75px;
+  flex-direction: column;
+  height: calc(100vh - layout-variables.$header-height);
+  padding-top: 1rem;
+  z-index: 12;
+  align-items: center;
+  justify-content: stretch;
+  transition: width layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+  position:  fixed;
+  background:#212529 ;
+  .hidden-sidebar {
+		opacity: 0;
+		width: 0;
+    margin-left:0;
+		transition: opacity layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+	}
+  .top-sidebar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 30px;
+		transition: height layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+		.hidden-sidebar {
+			text-align: center;
+			width: 100%;
+		}
+  }
+  .channel-logo {
+		display: block;
+		width: 30px;
+		height: 30px;
+		transition: layout-variables.$animation-duration layout-variables.$animation-timing-curve;
+		>img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.sidebar.open {
+	.hidden-sidebar {
+		width: 100%;
+		height: auto;
+		opacity: 1;
+	}
+	.sidebar-list {
+		margin-top: 1rem;
+	}
+	.channel-logo {
+		width: 150px;
+    height: 100%;
+	}
+	.sidebar-link {
+		justify-content: flex-start;
+	}
+	width: 250px;
+	.top-sidebar {
+		height: 80px;
+	}
+}
+
+.middle-sidebar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+  margin: 1rem 0;
+  border-bottom: 1px solid layout-variables.$sidebar-border-color ;
+}
+
+.middle-sidebar,
+.bottom-sidebar {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  .hidden-sidebar{
+    margin-left: 1.5rem;
+    white-space: nowrap;
+  }
+}
+
+.sidebar-icon {
+  color:#ddd;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  width: 100%;
+  padding: .5rem 0;
+  color: white;
+  text-decoration: none;
+  align-items: center;
+  padding-left: 25px;
+}
+
+.sidebar-list-item {
+  position: relative;
+  width: 100%;
+  fill: #ddd;
+  &.active{
+    &::before{
+      content: "";
+      background-color: #ddd;
+      height: 100%;
+      left: 0;
+      width: 4px;
+      position: absolute;
+      
+    }
+    fill: variables.$medium-blue;
+    background-color: variables.$dark-blue;
+  }
+  &:hover{
+    background-color: variables.$dark-blue;
+    .sidebar-icon{
+      animation: rotate 2s infinite;
+      animation-delay: .3s;
+    }
+  }
+}
+
+.sidebar.open {
+  width: 300px;
+}
+.sidebar.open{
+  .custom-tooltip{
+    display: none !important;
+  }
+}
+.your-channel {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: .15rem;
+  margin-top: .5rem;
+}
+
+.channel-name {
+  color: white;
+  font-size: .75rem;
+}  /* Track */
+
+.sidebar ::-webkit-scrollbar{
+  width: 0;
+}
+.sidebar.open ::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background:#212529;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background:#dddd; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd; 
+}
+
+@keyframes rotate {
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .sidebar{
+    width: 0px;
+    top: 64px;
+    margin-top:0;
+    height: calc(100vh - 64px);
+    left: 0;
+    flex-shrink: 0;
+    position: fixed;
+    z-index: 12;
+    box-shadow: none;
+  }
+}

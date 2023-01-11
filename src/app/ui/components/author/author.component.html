@@ -1,0 +1,24 @@
+<app-author-filter (applyFilter)="applyFilter($event)" [genderOptions]="genderOptions"></app-author-filter>
+<div class="accordion accordion-flush" id="authorAccordion">
+    <div class="row">
+        <app-table-header [rowCountSelectable]="false" buttonName="Yeni Yazar Ekle" (createButtonClick)="openCreateAuthorDialog()" [model]="authors?.data"
+        ></app-table-header>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2" *ngFor="let author of authors?.data.items">
+            <div class="accordion-item custom-shadow">
+                <h2 class="accordion-header" [attr.id]="'author-accordion'+author.id">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#author-accordion-body'+author.id" aria-expanded="false" aria-controls="flush-collapseOne">
+                    {{author.fullName}}
+                  </button>
+                </h2>
+                <div [attr.id]="'author-accordion-body'+author.id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#authorAccordion">
+                  <div class="accordion-body">
+                    <app-data-not-found *ngIf="author.books.length == 0" text="Bu yazarın kütüphanemizde hiç kitabı bulunmamaktadır."></app-data-not-found>
+                    <span *ngIf="author.books.length>0"><b>{{author.fullName}} </b>adlı yazarın kütüphanemizde <b>{{author.books.length}} </b>adet kitabı bulunmaktadır: <b *ngFor="let book of author.books; let last = last">{{book.name}} <span *ngIf="!last">, </span> </b></span>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <app-pagination [dataToPaginate]="authors " position="middle" [currentPage]="currentPage" (onPageChange)="onPageChange($event)"></app-pagination>
+    </div>
+
+</div>

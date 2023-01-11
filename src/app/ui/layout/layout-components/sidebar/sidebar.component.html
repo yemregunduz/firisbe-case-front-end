@@ -1,0 +1,28 @@
+<aside id="sidebar" class="sidebar" data-sidebar (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+	<div class="top-sidebar">
+		<a routerLink="" class="channel-logo"><img src="../../../../../assets/images/firisbe.png" alt="Channel Logo"></a>
+		<div class="hidden-sidebar your-channel">Frisbe Case Study</div>
+	</div>
+	<div class="middle-sidebar">
+		<ul class="sidebar-list">
+			<li class="sidebar-list-item" [class.active]="route.isActive(menuItem.url,true)"
+				*ngFor="let menuItem of menu.mainMenuItems">
+				<a [routerLink]="[menuItem.url]" class="sidebar-link">
+					<mat-icon class="sidebar-icon">{{menuItem.icon}}</mat-icon>
+					<div class="hidden-sidebar">{{menuItem.title}}</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="bottom-sidebar">
+		<ul class="sidebar-list mt-0">
+			<li class="sidebar-list-item" [class.active]="route.isActive(menuItem.url,true)"
+				*ngFor="let menuItem of menu.bottomMenuItems">
+				<a [routerLink]="[menuItem.url]" class="sidebar-link">
+					<mat-icon class="sidebar-icon">{{menuItem.icon}}</mat-icon>
+					<div class="hidden-sidebar">{{menuItem.title}}</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</aside>

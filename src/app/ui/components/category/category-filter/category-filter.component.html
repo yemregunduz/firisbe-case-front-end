@@ -1,0 +1,36 @@
+<div class="filter-box custom-form">
+    <div class="card custom-shadow border-0">
+      <div class="card-header ">
+        <mat-icon>drive_file_rename_outline</mat-icon>
+
+        <h3 class="fw-bold">Yazar Filtrele</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="categoryFilterForm" (keyup.enter)="createDynamicRequestModel()">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Kategori Adı:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName = "name">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Kategori Açıklaması:</span>
+                </div>
+                <input type="text" class="form-control form-control-sm" formControlName = "description">
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button mat-flat-button class="bg-danger text-white"  (click)="resetFilterForm()">Formu Temizle</button>
+        <button mat-flat-button color="primary" (click)="createDynamicRequestModel()">Filtrele</button>
+      </div>
+    </div>
+  </div>

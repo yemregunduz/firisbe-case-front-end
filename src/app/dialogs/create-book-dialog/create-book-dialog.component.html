@@ -1,0 +1,69 @@
+<div class="mat-dialog-header">
+  <h2 mat-dialog-title class="m-0">Kitap Ekle</h2>
+  <mat-icon class="mat-dialog-closer" [mat-dialog-close]>close</mat-icon>
+</div>
+<mat-dialog-content>
+
+  <form class="custom-form" [formGroup]="bookForm">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Kitap Adı:</span>
+          </div>
+          <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('name')"
+            formControlName="name">
+        </div>
+        <mat-error *ngIf="validateFormControl('name')">
+          Kitap adı en az 2 karakter olmalıdır.
+        </mat-error>
+      </div>
+      <div class=" col-md-6 col-sm-12">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Isbn Numarası:</span>
+          </div>
+          <input type="text" class="form-control form-control-sm" [class.border-danger]="validateFormControl('isbn')"
+            formControlName="isbn">
+        </div>
+        <mat-error *ngIf="validateFormControl('isbn')">
+          Isbn numarası en az 8 en fazla 13 karakter olmalıdır.
+        </mat-error>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Yazar:</span>
+          </div>
+          <select class="form-select form-select-sm" [class.border-danger]="validateFormControl('authorId')"
+            formControlName="authorId">
+            <option value="">Yazar Seç</option>
+            <option *ngFor="let author of data?.authors" [value]="author.id">{{author.fullName}}</option>
+          </select>
+        </div>
+        <mat-error *ngIf="validateFormControl('authorId')">
+          Yazar seçimi zorunludur.
+        </mat-error>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Kategori:</span>
+          </div>
+          <select class="form-select form-select-sm" [class.border-danger]="validateFormControl('categoryId')"
+            formControlName="categoryId">
+            <option value="">Kategori Seç</option>
+            <option *ngFor="let category of data?.categories" [value]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <mat-error *ngIf="validateFormControl('categoryId')">
+          Yazar seçimi zorunludur.
+        </mat-error>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="warn" [mat-dialog-close]>Vazgeç</button>
+  <button mat-flat-button color="primary" (click)="createBook()">Ekle</button>
+</mat-dialog-actions>
