@@ -4,7 +4,7 @@ Proje [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4 ile y
 
 ## Development server
 
-Projeyi development serverda ayağa kaldırmak için `ng serve` komutunu çalıştırabilirsiniz.. Eğer `ng serve --open` komutu ile çalıştırırsanız direkt tarayıcınızda açılacaktır.
+Projeyi development serverda ayağa kaldırmak için `ng serve` komutunu çalıştırabilirsiniz.. Eğer `ng serve --open` komutu ile çalıştırırsanız direkt tarayıcınızda açılacaktır. Projeyi başlatmadan önce [FirisbeCase-BackEnd](https://github.com/yemregunduz/FirisbeCase-BackEnd) projesinin çalıştığından emin olmalısınız.
 ## Build
 
 Projeyi build etmek için `ng-build` komutunu çalıştırabilirsiniz. Derleme sonuçları "dist/" dizininde saklanacaktır.
