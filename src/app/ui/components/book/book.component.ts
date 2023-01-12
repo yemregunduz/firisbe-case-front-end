@@ -36,9 +36,13 @@ export class BookComponent implements OnInit {
     private authorService:AuthorService,
   ) {}
   async ngOnInit() {
-    await this.getBooks(this.currentPage,this.currentRowCount);
-    await this.getCategories();
-    await this.getAuthors();
+    await this.executeAllRequest();
+  }
+  async executeAllRequest(){
+    const booksPromise = this.getBooks(this.currentPage,this.currentRowCount)
+    const categoriesPromise = this.getCategories()
+    const authorsPromise = this.getAuthors();
+    await Promise.all([booksPromise,categoriesPromise,authorsPromise])
   }
   async applyFilter(dynamicRequestModel: DynamicRequestModel) {
     dynamicRequestModel != null
